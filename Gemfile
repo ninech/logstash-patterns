@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
 group :development, :test do
+  gem 'rspec'
   gem 'logstash-filter-grok'
-  gem 'logstash-devutils'
 end
