@@ -273,5 +273,21 @@ RSpec.describe "DOVECOT" do
         expect(grok).to include("dovecot_message" => "Disconnect from 1.2.3.4: Connection closed (in reset)")
       end
     end
+
+    context "auth-worker log" do
+      let(:value) { "auth-worker: sql(mail@example.com,1.2.3.4): Password mismatch" }
+
+      it "generates the dovecot_user field" do
+        expect(grok).to include("dovecot_user" => "mail@example.com")
+      end
+
+      it "generates the dovecot_remote_ip field" do
+        expect(grok).to include("dovecot_remote_ip" => "1.2.3.4")
+      end
+
+      it "generates the dovecot_auth_backend" do
+        expect(grok).to include("dovecot_auth_backend" => "sql" )
+      end
+    end
   end
 end
