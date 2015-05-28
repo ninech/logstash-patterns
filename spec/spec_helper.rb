@@ -21,7 +21,7 @@ module GrokHelpers
 
   def build_grok(label)
     grok = LogStash::Filters::Grok.new("match" => ["message", "%{#{label}}"],
-                                       "patterns_dir" => File.expand_path("../../patterns", __FILE__)
+                                       "patterns_dir" => File.expand_path("../../patterns.d", __FILE__)
                                       )
     grok.register
     grok
