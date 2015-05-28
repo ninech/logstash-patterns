@@ -230,38 +230,48 @@ RSpec.describe "DOVECOT" do
   describe "DOVECOT" do
     let(:pattern) { "DOVECOT" }
 
-    let(:value) { "pop3(mail@example.com): Disconnected: Logged out top=1/21, retr=2/42, del=3/23, size=16978739" }
+    context "log w/ elements" do
+      let(:value) { "pop3(mail@example.com): Disconnected: Logged out top=1/21, retr=2/42, del=3/23, size=16978739" }
 
-    it "generates the dovecot_cmd_top field" do
-      expect(grok).to include("dovecot_cmd_top" => "1")
-    end
+      it "generates the dovecot_cmd_top field" do
+        expect(grok).to include("dovecot_cmd_top" => "1")
+      end
  
-    it "generates the dovecot_bytes_top field" do
-      expect(grok).to include("dovecot_bytes_top" => "21")
-    end
+      it "generates the dovecot_bytes_top field" do
+        expect(grok).to include("dovecot_bytes_top" => "21")
+      end
  
-    it "generates the dovecot_cmd_retr field" do
-      expect(grok).to include("dovecot_cmd_retr" => "2")
-    end
+      it "generates the dovecot_cmd_retr field" do
+        expect(grok).to include("dovecot_cmd_retr" => "2")
+      end
  
-    it "generates the dovecot_bytes_retr field" do
-      expect(grok).to include("dovecot_bytes_retr" => "42")
-    end
+      it "generates the dovecot_bytes_retr field" do
+        expect(grok).to include("dovecot_bytes_retr" => "42")
+      end
  
-    it "generates the dovecot_cmd_del field" do
-      expect(grok).to include("dovecot_cmd_del" => "3")
-    end
+      it "generates the dovecot_cmd_del field" do
+        expect(grok).to include("dovecot_cmd_del" => "3")
+      end
  
-    it "generates the dovecot_message_count" do
-      expect(grok).to include("dovecot_message_count" => "23")
-    end
+      it "generates the dovecot_message_count" do
+        expect(grok).to include("dovecot_message_count" => "23")
+      end
  
-    it "generates the dovecot_size" do
-      expect(grok).to include("dovecot_size" => "16978739")
+      it "generates the dovecot_size" do
+        expect(grok).to include("dovecot_size" => "16978739")
+      end
+
+      it "generates the dovecot_message" do
+         expect(grok).to include("dovecot_message" => "Disconnected: Logged out")
+      end
     end
 
-    it "generates the dovecot_message" do
-      expect(grok).to include("dovecot_message" => "Disconnected: Logged out")
+    context "log w/o elements" do
+      let(:value) { "lmtp(15317): Disconnect from 1.2.3.4: Connection closed (in reset)" }
+
+      it "generates the dovecot_message" do
+        expect(grok).to include("dovecot_message" => "Disconnect from 1.2.3.4: Connection closed (in reset)")
+      end
     end
   end
 end
