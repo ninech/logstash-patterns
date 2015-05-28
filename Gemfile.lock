@@ -1,3 +1,18 @@
+GIT
+  remote: git://github.com/elastic/logstash.git
+  revision: 6d0298814226f419294c9b38022334d2eca103f2
+  specs:
+    logstash-core (2.0.0.dev)
+      cabin (~> 0.7.0)
+      clamp (~> 0.6.5)
+      filesize (= 0.0.4)
+      i18n (= 0.6.9)
+      minitar (~> 0.5.4)
+      oj
+      pry (~> 0.10.1)
+      stud (~> 0.0.19)
+      treetop (< 1.5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -10,17 +25,6 @@ GEM
     i18n (0.6.9)
     jls-grok (0.11.2)
       cabin (>= 0.6.0)
-    jrjackson (0.2.8)
-    logstash-core (1.5.0-java)
-      cabin (~> 0.7.0)
-      clamp (~> 0.6.5)
-      filesize (= 0.0.4)
-      i18n (= 0.6.9)
-      jrjackson (~> 0.2.8)
-      minitar (~> 0.5.4)
-      pry (~> 0.10.1)
-      stud (~> 0.0.19)
-      treetop (< 1.5.0)
     logstash-filter-grok (0.1.11)
       jls-grok (~> 0.11.1)
       logstash-core (>= 1.4.0, < 2.0.0)
@@ -29,7 +33,12 @@ GEM
       logstash-core (>= 1.4.0, < 2.0.0)
     method_source (0.8.2)
     minitar (0.5.4)
+    oj (2.12.8)
     polyglot (0.3.5)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     pry (0.10.1-java)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -58,7 +67,9 @@ GEM
 
 PLATFORMS
   java
+  ruby
 
 DEPENDENCIES
+  logstash-core!
   logstash-filter-grok
   rspec
