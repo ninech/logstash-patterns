@@ -1,0 +1,21 @@
+DOVECOT_PROGRAM %{DATA:dovecot_program}(\(%{DATA:dovecot_user}\))?:
+
+# Elements
+DOVECOT_LIP lip=%{IP:dovecot_local_ip}
+DOVECOT_RIP rip=%{IP:dovecot_remote_ip}
+DOVECOT_METHOD method=%{WORD:dovecot_method}
+DOVECOT_MPID mpid=%{NUMBER:dovecot_mpid}
+DOVECOT_USER user=<%{DATA:dovecot_user}>
+
+DOVECOT_BYTES bytes=%{NUMBER:dovecot_bytes_in}/%{NUMBER:dovecot_bytes_out}
+DOVECOT_TOP top=%{NUMBER:dovecot_cmd_top}/%{NUMBER:dovecot_bytes_top}
+DOVECOT_RETR retr=%{NUMBER:dovecot_cmd_retr}/%{NUMBER:dovecot_bytes_retr}
+DOVECOT_DEL del=%{NUMBER:dovecot_cmd_del}/%{NUMBER:dovecot_message_count}
+DOVECOT_SIZE size=%{NUMBER:dovecot_size}
+
+DOVECOT_SSL_SECURITY ssl_security="%{NOTSPACE:dovecot_ssl_proto} with cipher %{DATA:dovecot_ssl_cipher}"
+
+DOVECOT_ELEMENT %{DOVECOT_LIP}|%{DOVECOT_RIP}|%{DOVECOT_METHOD}|%{DOVECOT_MPID}|%{DOVECOT_USER}|%{DOVECOT_BYTES}|%{DOVECOT_TOP}|%{DOVECOT_RETR}|%{DOVECOT_DEL}|%{DOVECOT_SIZE}
+DOVECOT_ELEMENTS %{DOVECOT_ELEMENT}(, %{DOVECOT_ELEMENT})*
+
+DOVECOT %{DOVECOT_PROGRAM} %{DATA:dovecot_message} %{DOVECOT_ELEMENTS}
