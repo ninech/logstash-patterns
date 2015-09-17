@@ -20,7 +20,7 @@ RSpec.describe 'amavis log' do
     it { is_expected.to include('amavis_from' => 'from@example.com') }
     it { is_expected.to include('amavis_to' => 'recv@example.com') }
     it { is_expected.to include('amavis_message-id' => '1qn13030$58r39090$@example.com') }
-    it { is_expected.to include('amavis_tests_kv' => 'HTML_MESSAGE=0.001') }
+    it { is_expected.to include('amavis_tests' => 'HTML_MESSAGE=0.001') }
     it { is_expected.to include('amavis_elapsedtime' => '4080') }
   end
 
@@ -32,7 +32,7 @@ RSpec.describe 'amavis log' do
     it { is_expected.to include('amavis_hits' => '5.919') }
     it { is_expected.to include('amavis_size' => '647762') }
     it { is_expected.to include('amavis_header_from' => '"DHL_Paket"<from@example.com>') }
-    it { is_expected.to include('amavis_tests_kv' => 'ALL_TRUSTED=-1,FROM_MISSPACED=0.001,FROM_MISSP_EH_MATCH=1.065,HTML_MESSAGE=0.001') }
+    it { is_expected.to include('amavis_tests' => 'ALL_TRUSTED=-1,FROM_MISSPACED=0.001,FROM_MISSP_EH_MATCH=1.065,HTML_MESSAGE=0.001') }
   end
 
   describe 'blocked spam' do

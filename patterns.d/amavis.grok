@@ -1,6 +1,6 @@
 AMAVIS_MESSAGEID Message-ID: <%{DATA:amavis_message-id}>
 AMAVIS_SIZE size: %{POSINT:amavis_size}
-AMAVIS_TESTS Tests: \[%{DATA:amavis_tests_kv}\]
+AMAVIS_TESTS Tests: \[%{DATA:amavis_tests}\]
 AMAVIS_FROM From: %{DATA:amavis_header_from}
 AMAVIS_HITS Hits: %{NUMBER:amavis_hits}
 AMAVIS_QUARANTINE quarantine: %{NOTSPACE:amavis_quarantine}
