@@ -1,0 +1,2 @@
+PUPPET_COMPILED Compiled catalog for %{HOSTNAME:puppet_agent} in environment %{WORD:puppet_environment} in %{SECOND:puppet_compile_time} seconds
+PUPPETMASTER %{PUPPET_COMPILED}
